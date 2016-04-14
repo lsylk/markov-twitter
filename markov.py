@@ -67,10 +67,18 @@ def tweet(chains):
     # Use Python os.environ to get at environmental variables
     # Note: you must run `source secrets.sh` before running this file
     # to make sure these environmental variables are set.
+    
+    api = twitter.Api(
+    consumer_key = os.environ['TWITTER_CONSUMER_KEY'],
+    consumer_secret = os.environ['TWITTER_CONSUMER_SECRET']
+    access_token_key= os.environ['TWITTER_ACCESS_TOKEN_KEY']
+    access_token_secrets = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
 
+    print api.verifyCredentials()
 
+    status = api.PostUpdate('" ".join(words)') 
 
-    pass 
+    print status.text
 
 
 
