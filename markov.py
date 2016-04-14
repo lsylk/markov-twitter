@@ -53,8 +53,12 @@ def make_text(chains):
         # it would run for a very long time.
 
         word = choice(chains[key])
-        words.append(word)
-        key = (key[1], word)
+
+        if len(" ".join(words)) + len(word) < 140:
+            words.append(word)
+            key = (key[1], word)
+        else:
+            break
 
     return " ".join(words)
 
@@ -63,7 +67,12 @@ def tweet(chains):
     # Use Python os.environ to get at environmental variables
     # Note: you must run `source secrets.sh` before running this file
     # to make sure these environmental variables are set.
-    pass
+
+
+
+    pass 
+
+
 
 # Get the filenames from the user through a command line prompt, ex:
 # python markov.py green-eggs.txt shakespeare.txt
